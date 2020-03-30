@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Memento giac/xcas/qcas</title>
+</head>
+
+<body>
+<!--
+<center><h3><font color="#40A497">Recherche par mot-clé</font></h3></center>
+ <hr>
+<center>L'outil ci dessus vous permet de naviguer aisément parmi les différents commandes ainsi que leurs descriptions.</center>
+<br>
+<hr>
+-->
+(<a href="memento.html#Functions">Functions</a>, <a href="memento.html#Tests">Tests</a>, <a href="memento.html#Loops">Loops</a>, <a href="memento.html#Lists">Lists and Matrices</a>, <a href="memento.html#Advanced">Advanced</a>)   
+
+<center><h3><font color="#40A497">Memento: Programmation</font></h3></center>
+<h4>Elementary commands</h4>
+
+<br>
+  <font size="-1"><em>Commands are separated with</em></font> <code>;</code>
+
+<ul>
+   <li>Common way to store in a variable:<br>
+      <code>a:=1;</code><font size="-2"> and also:</font> <code>a,b,c:=1,2,3;</code></li>
+   <li>Compute without printing the answer <code>:;</code><br>
+      <code>a:=2^10000:;</code></li>
+   <li> <code>purge(a,b)</code> <font size="-1">(free the variables a and b)</font></li>
+</ul>
+<font size="-1" color="#4004A7"><em>In giac/xcas, except the storage syntax, the default syntax for functions, loops and tests is like in the C language</em></font>
+<!--        ----------------------FONCTIONS-------------------------------                       -->
+<h4><a name="Functions">Functions</a></h4>
+      <ol>
+	<font size="-1"><em>
+	<li>In a program, variables that are not explicitely declared with the <a href="local"><code>local</code></a> instruction are  <u>global</u>.</li>
+	<li><u>local</u> variables must be initialised. So to use a formal symbol in a function, either use a non initialised global variable, or do as in example <code>rfact</code> below.</li>
+	<li>Blocs of code are in <code>{  }</code>. One can use several lines in a same bloc.</li>
+	<li>A program always return the last evaluation. The <code>return</code> command is optional.</li>
+	<li>Please do not use <code>i</code> as a  variable name in loops because it is reserved for the complex number square root of -1.</li>
+	</font></em>
+      </ol>	
+
+    <ul>
+    <li><code>f(x,y):=x+y;</code> ( <font size="-1">Synonym: <code>f:=(x,y) -&gt; x+y;</code></font> )</li>
+    <li><code>rfact(a,b,c):={<br>
+        &nbsp; local d,r1,r2,x;<br>
+        &nbsp; d:=b^2-4*a*c;<br>
+        &nbsp;  <a href="symbol">x:='x';//<font size="-2"><i>synonym:</i> assume(x,symbol)</a></font><br>
+        &nbsp; if(d&lt;0){<br>
+        &nbsp;&nbsp; return a*x^2+b*x+c;<br>
+        &nbsp; }<br>
+        &nbsp; else{<br>
+        &nbsp;&nbsp; r1:=(-b-sqrt(d))/(2*a);<br>
+        &nbsp;&nbsp; r2:=(-b+sqrt(d))/(2*a);<br>
+        &nbsp;&nbsp; return a*(x-r1)*(x-r2);<br>
+        &nbsp; }<br>
+    }</code></li>
+    </ul>  
+<!--       ------------------------Tests----------------------------                        -->
+<h4><a name="Tests">Tests</a></h4>
+   <ul>
+   <li><font size="-1">Comparaison between x et y</font>
+          <ul>
+           <li> <code>x==y</code> , <code>x!=y</code> <font size="-1">( equal, different. Synonyms: <code>x=y</code> , <code>x&lt;&gt;y</code>)</font></li>
+	   <li> <code>x&lt;y</code> , <code>x&lt;=y</code> , <code>x&gt;y</code> , <code>x&gt;=y</code>    
+	   <li> <code>and</code> , <code>or</code> , <code>not</code> <font size="-1">(synonyms: <code>&&</code> , <code>||</code> , <code>!</code> )</font></li>
+	 </ul> 
+   </li>
+   <li><code>if( <i>condi</i> ){ <i>instructions</i> ;}</code></li>
+   <li><code>if( <i>condi</i> ){   <i>instructions</i> ;}</code><br>
+       <code>else{ <i>instructions</i> ;}</code>
+   </li>
+   </ul>
+<!--     ---------------------Boucles------------------------          -->
+<h4><a name="Loops">Main loops</a></h4><br>
+   <font size="-1"><em>NB: Les parenthesis and accolades in for, while are mandatory.</em></font>  
+   <ul>
+   <li><code>for( <i>ini</i>; <i>condi</i>; <i>incr</i> ){ <i>instructions</i> ;}</code><br>
+      <ul>
+        <li><code>for(j:=0; j&lt;10;j++){ print(j);}</code> <br>
+        <font size="-1">(we print integers from  0 to 9 with a step of 1)</li></font>
+        <li><code>for(j:=10; j&gt;1;j:=j-3){ print(j);}</code> <br>
+        <font size="-1">(we print integers > 1 starting from  10 with a step of  -3. ie: 10,7,4)</font></li>
+      </ul>
+   </li>
+   <li><code>while(<i>condi</i>){ <i>instructions</i> ;}</code>
+      <ul>
+        <li><code>j:=2;while(j&lt;10){j:=j*j ;}</code></li>
+      </ul>
+   </li>
+</ul>
+<!--      ---------------------Listes----------------    -->
+<h4><a name="Lists">Sequences <code>( , , )</code> Lists <code>[ , , ] and Matrices</code></a></h4>
+<font size="-1"><font color="#4004A7"<em>Sequences and lists are indexed <u>from 0</u> (except in mode maple). Use brackets to get an element:</em>
+   <center><code>a[0]</code>  is the first element of the  list or sequence <code>a</code></center></font>
+<br>
+   <em><u>Sequences</u> <code>( , , )</code> are ordered objects separated with commas. Les parenthesis are simplified. Operators +,* ... <u>are really not</u> the usual operations of vectors</em><br>
+   <ul> Below, <code>a</code>, <code>b</code> and <code>c</code> are the same.
+       <li> <code>a:=0,1,2,3,4,5;</code></li>
+       <li> <code>b:=(0,1),((2,3),4,5);</code></li>
+       <li> <code>c:=<a href="seq">seq</a>(j,j=0..5);</code></li>
+       To start with an empty sequence, use the keyword: <u>NULL</u>
+       <li> <code>d:=NULL;d:=d,1;d:=d,2;</code>
+   </ul><br>
+
+   <em><u>Lists</u> <code>[ , , ]</code> are  objets between brackets and separated by commas. They are ordered and no bracket is simplified. They are used for  <u>vectors</u> and <a href="matrix"><u>matrices</u></a>.</em><br>
+   <ul> Below, <code>a1</code> et <code>a2</code> are identical. They are vectors. They differ from <code>b</code> who is a matrix with 2 rows and 3 colons. 
+       <li> <code>a1:=[0,1,2,3,4,5];</code></li>
+       <li> <code>a2:=[seq(j,j=0..5)];</code></li>
+       <li> <code>b:=[[0,1,2],[3,4,5]];</code></li>
+       <li> <code>a1+2*a2; <a href="ker">ker</a>(b);</code></li>
+       <li> <code>op(a1)</code> is usefull to remove the external brackets of a list.<li>
+       <li> <code>[seq(j*j, j=a1)];</code> <i>(is the list of j*j when j moves in the list <code>a1</code>)</i>
+       <li> <code>a3:=<a href="newList">newList</a>(10^7);</code> <i>(to efficiently create a list of zeros)</i>
+   </ul><br>
+   <em><u>A Matrix</u> <code>[[ , , ],[ , ,]]</code>is defined by the list of its rows surrounded by brackets. Each row is a list of entries separated by comma and is surrounded by brackets. In the following the matrices m1 and m2 are identical. They have 2 rows and 5 columns</em>
+     <ul>
+       <li> <code>m1:=[[0,1,2,3,4],[0,3,6,9,12]];</code</li>
+       <li><code>m2:=[a1,a3];</code> (where a1,a3 are defined above)</li>
+       </ul>
+       <ul>The matrices m3 and m4 are identical and they have 1 row and 5 columns. They differ from m5. The matrix m5 have 1 colomn and 5 rows. None of the mi is a vector. v4 est the vector [30,90].
+           <li><code>m3:=[[0,1,2,3,4]]</code></li>
+           <li><code>m4:=[a1]</code></li>
+           <li><code>m5:=[[0],[1],[2],[3],[4]];</code></li>
+           <li><code>v4:=m1*a1;</code></li>
+           </ul>
+	<ul>Many commands (Ex ker) return a list of vectors. In the following example, <code>N</code> is a basis of the kernel of  <code>m1</code>. <code>N[0]</code> is the first  vector of this basis, N[1] the next one...<br>
+	  Warning: <code>N</code> will print these vectors as <u>rows</u>.
+          <li><code>N:=ker m1;</li>
+        </ul>
+
+</font>
+<h4><a name="Advanced">Advanced Notions</a></h4>
+   <font size="-1">
+   <ul><li><em>Storing with <code>:=</code> is by values. With it, data is copied even with  big lists or matrices.</em></li>
+   <i>To be more efficient, there is also an affectation by memory address:<i>
+     <li><font color="#4004A7"><code>=&lt;</code></font> is the <u>affectation by reference</u>:<br>
+     Ex: <code>a:=[1,2,3];b=&lt;a;b[1]=&lt;0;</code><br> now <code>a</code> is also aussi <code>[1,0,3]</code>. On the other side, if we had done <code>b[1]:=0</code>, a new list  <code>b</code> would have been created and  <code>a</code> wouldn't have changed</li>
+     <li> <font color="#4004A7"><code>#</code></font> is usefull to  de create a variable from a string:<br>
+     Ex1: <code>"a1"</code>is a string and <code>#"a1"</code> is a variable.<br>
+     Ex2: <code>S:=sum(#("a"+j),j=0..9);normal(S^5);</code> expand the following: (a0+a1+...+a9)^5.
+     <li>Programming syntaxes in maple style:<br>
+     <em>The following syntaxes <u>should be used only</u> in mode maple mode</em>. If not one must for instance know that in the <code>while</code> example, <i>condi</i> can't be between parenthesis.
+        <ul><li><code>if <i>condi</i> then <i>instrutions</i> fi</code></li>
+	   <li><code>for <i>j</i> from <i>1</i> to 5 do <i>instruc</i> od</code></li>
+	   <li><code>while <i>condi</i> do <i>instrutions</i> od</code></li>
+	 </ul>
+     </li>
+   </ul>  
+</font>
+
+
+
+<hr>
+</body> </html>

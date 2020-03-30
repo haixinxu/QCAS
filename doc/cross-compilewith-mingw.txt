@@ -1,0 +1,61 @@
+To build qcas for windows from linux.
+
+1) cross build and install the giac library with mingw
+  a)you need gmp,pthreads.2,mpfr
+    * Ex for gmp:    ./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+    * Ex for mpfr: (Pb with gcc-4.6) 
+                   # export CC=gcc-4.4; export CPP=cpp-4.4 et
+                   #  ./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+  b)much better to have also gsl
+  c)if possible try also NTL , pari
+     * NTL: edit the file: DoConfig and put
+
+----------------------------------------------------------------------
+'CC'	      => 'i686-w64-mingw32-gcc',
+'CXX'	      => 'i686-w64-mingw32-g++',
+'CFLAGS'      => '-O2',
+'CXXFLAGS'    => '$(CFLAGS)',
+'AR'	      => 'i686-w64-mingw32-ar',
+'ARFLAGS'     => 'ruv',
+'RANLIB'      => 'i686-w64-mingw32-ranlib',
+'LIBTOOL'     => 'libtool',
+
+'LDFLAGS'     => '-static-libgcc -static-libstdc++ -L/usr/i686-w64-mingw32/lib',
+'LDFLAGS_CXX' => '$(LDFLAGS)',
+'LDLIBS'      => '-lm',
+'LDLIBS_CXX'  => '$(LDLIBS)',
+'CPPFLAGS'    => '',
+
+'DEF_PREFIX'  => '/usr/i686-w64-mingw32',
+--------------------------end of modif for NTL DoConfig-----------------------------------------
+
+
+2) install with wine the QT version for mingw. For instance in:
+/home/fred/.wine/drive_c/dev
+3) copy this win32-x-g++ in your linux: /usr/share/qt4/mkspecs
+(or copy your win32-g++ in win32-x-g++ and edit the qmake.conf to take care of mingw and the qt intalled by wine
+4) in linux in qcas repo: 
+qmake -spec win32-x-g++
+
+adapt the giac/config.h for mingw cf the config.h.mingw in this directory
+
+then make.
+
+5) To distribute, put the following files in the same directory:
+
+from your mingw
+libgcc_s_dw2-1.dll
+libgsl-0.dll
+libgslcblas-0.dll
+mingwm10.dll
+pthreadGC2.dll
+
+from:
+release/qcas.exe
+
+from your wine QT install:
+
+QtCore4.dll
+QtGui4.dll
+QtXml4.dll
+

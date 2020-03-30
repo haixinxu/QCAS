@@ -1,0 +1,21 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Qcas
+GenericName=Computer Algebra System
+GenericName[de]=Computeralgebrasystem
+GenericName[fr]=Système de calcul formel
+Comment=Qt frontend to Giac/Xcas 
+Comment[de]=Qt schnittstelle für Giac/Xcas
+Comment[fr]=Interface Qt pour Giac/Xcas
+TryExec=qcas
+Exec=qcas %F
+Icon=xcas
+Terminal=false
+Type=Application
+Categories=Education;Math;
+MimeType=application/x-xcas;
+
+X-AppInstall-Package=qcas
+X-AppInstall-Popcon=330
+X-AppInstall-Section=universe

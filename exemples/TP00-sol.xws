@@ -1,0 +1,301 @@
+ restart;maple_mode(0);cas_setup(0,0,0,1,0,1e-10,25,[1,50,0,25],0,0,0);//radians,pas de cmplx, pas de  Sqrt
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ Attention pour les utilisateurs de maple, root[3](23) ne marche pas, il fait juste racine carree.
+ root(3,23);
+ surd(23,3);//c'est plutot celui ci que l'on trove dans la doc
+root(3,23.);evalf(root(3,23.));root(3,approx(23));
+evalf(Pi,1000);approx(Pi,1000);
+maple_mode(0);evalf(E);evalf(e);
+maple_mode(1);evalf(E);evalf(e);evalf(exp(1));
+maple_mode(0);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ Attention mettre plusieurs Digits:= sur une meme ligne a l'air de poser probleme?
+ Digits:=1000;
+ sqrt(2.0);
+ Digits:=10;
+ sqrt(3.0);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+-------------------------------------EXERCICE---------------------------------
+ l:=[1,33,4];
+ augment(l,55);
+ a:=11111;
+ purge(a);
+ a;
+ pp1:=44*atan(1/57)+7*atan(1/239)-12*atan(1/682)+24*atan(1/12943);
+ simplify(pp1); //ou peut etre tsimplify
+ l2:=[11,133,14];
+concat(l1,l2);
+ a:=exp(2*i*pi/5);
+ p:=point(1,display=bleu+epaisseur_point_3+point_etoile);
+ seq(p*a^j,j=0..4);
+ [seq(p*a^j,j=0..4)];[seq(p*a^j,j=0..4)]*2;
+ [seq(p*a^j,j=0..4)]+[1$5];//[seq(p*a^j,j=0..4)]+1; ne translate qu'un element.
+1_(dm^3)+3_cl;//On ajoute 2 volumes.
+ purge(x);// pour etre sur que x est libre.
+ x=='x';//vaut 1 si x est libre. Car dans ce cas, x il coincide avec le symbole 'x'
+ P:=x/(x^2+1);
+ Q:=x->sin(1/x);
+ type(P);//un symbole
+ type(Q);//une fonction
+ type(Q(x));//un symbole
+ type(Q(5));//un symbole car sin(1/5) est laisse tel quel
+ type(normal(Q(6/pi)));// un rationel car c'est une valeur remarquable (si l'on a simplifie)
+ diff(P,x);
+ function_diff(Q);
+ Q';
+(Q@@7)(y);
+ unapply(P,x);// cr\'ee la fonction P
+ simplify(function_diff(unapply(P,x)(Q)));// cr\'ee la fonction P et la compose avec Q
+ simplify(diff(sin(1/x)/(sin(1/x)^2+1),x));//verif
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+ (sqrt@@4)(65536);//la composee 4ieme calculee en 65368.
+// fltk 7Fl_Tile 20 36 982 541 12
+[
+// fltk N4xcas6FigureE 20 36 982 540 12
+// fltk N4xcas12History_PackE 22 79 322 70 12
+[
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ C:=circle(0,1);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ m0:=element(C,3);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ a:=affixe(m0);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ [seq(point((sqrt@@j)(a),display=bleu+epaisseur_point_3+point_etoile),j=0..9)];
+]
+]
+// fltk N4xcas5Geo2dE 348 54 524 522 12
+-5.1316,5.1316,-5.1619,5.1619,[],-5,5,1,0,0,0,1,1,1,0,1,1.4167,0,1,1,[],24,18,256,0,100,0,0,1,0.1
+ 
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+purge(a,b,c,d,e,t);
+ P:=((1-a*t)*(1-b*t)*(1-c*t)*(1-d*t))^(-1);
+ s:=series(P,t=0,3);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 57 12
+On constate que le coefficient de t^n est la somme de tous les monomes de degre£n en les 4 variables a,b,c,d. Ces monomes sont en bijections avec les suites£croissantes (au sens large) de n \'el\'ements de {1,2,3,4}.
+ coeff(s,t^3);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 42 12
+Pour r\'esoudre ce Pb on met des poids aux variables. Ex: a,d de degre 1, b: 3, c:£2, et f: 4. et l'on cherche les monomes de degres 208.
+ 
+ P:=1/((1-a*t)*(1-b*t^3)*(1-c*t^2)*(1-d*t)*(1-f*t^4));
+ s:=series(P,t=0,4):;
+ coeff(s,t^4); //Ex on verifie bien que f a un poids de 4
+ P:=1/((1-t)*(1-t^3)*(1-t^2)*(1-t)*(1-t^4));
+ s:=series(P,t=0,208):;
+ coeff(s,t^208);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 42 12
+Pour calculer le coefficient de t^n, seuls les termes en 1/(1-t^i) pour i<n+1£du produit vont contribuer, on n'a donc pas besoin du produit infini pour n fixe
+ P:=n->mul(1/(1-t^j),j=1..n);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ On cherche donc le coefficient de t^50 dans:
+ series(P(50),t,0,50);
+ coeff(series(P(50),t,0,50),t^50);
+ l:=normal((a+b+c+d)^8);
+ coeff(l,[a,b,c,d],[3,2,1,2]);
+ binomial(8,3)*binomial(5,2)*binomial(3,1);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ Pour supprimer/modifier, il suffit de supprimer/editer la ligne correspondante
+// fltk 7Fl_Tile 20 36 982 541 12
+[
+// fltk N4xcas6FigureE 20 36 982 540 12
+// fltk N4xcas12History_PackE 22 79 322 70 12
+[
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ n:=5;
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ zs:=exp(2*i*Pi/n);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ [seq(point(zs^j,affichage=point_width_2),j=0..4)];
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ segment(point(1),point(zs));//un cote du pentagone
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ d1:=droite(point(3),point(3+exp(2*i*Pi/3)),'affichage'=red);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ d2:=droite(2*x+3*y+1=0);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ A:=inter(d1,d2);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ t:=element(-5..3);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ perpendiculaire(point(t),d1);
+]
+]
+// fltk N4xcas5Geo2dE 348 54 524 522 12
+-5.1316,5.1316,-5.1619,5.1619,[],-5,5,1,0,0,0,1,1,1,0,1,1.4167,0,1,1,[],24,18,256,0,100,0,0,1,0.1
+ 
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+// fltk 7Fl_Tile 27 324 909 217 12
+[
+// fltk N4xcas7EditeurE 27 324 909 216 12
+223 ,
+quodicho(a,b):={
+  local n,aa,bb,g;
+  n:=0;aa:=1;bb:=1;
+  while((b*2^n) <= a){
+    n:=n+1;
+  }
+  aa:=2^(n-1);bb:=2^n;
+  for(k:=1;k<n;k++){
+    g:=iquo(aa+bb,2);
+    if(g*b<=a){ aa:=g;}
+    else{bb:=g;}
+  }
+  return(aa);
+}:;
+quodicho(127,33)==iquo(127,33);// doit etre vrai
+
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+purge(a);
+ trigexpand(cos(5*a));
+ normal(int(cos(5*x)/(2+sin(x)),x=0..Pi/2));//simplify ne marche pas?
+ P:=int(cos(5*x)/(2+sin(x)),x);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ La forme developpee avant l'integration est plus simple:
+ P:=int(trigexpand(cos(5*x)/(2+sin(x))),x);
+ simplify(diff(P,x)-cos(5*x)/(2+sin(x))); //NB: normal ne suffit pas.
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE---------------------------------------------
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 42 12
+La decomposition en elements simples introduit une extension de corps. (Que le£logiciel ne pourra pas toujours trouver)
+ I1:=int(cos(5*x)/(2+sin(3*x)));
+ plot(I1);
+ I2:=int(1/(2+sin(5*x)));// Attention a la partie entiere sinon ca n'est pas continu. 
+ plot(I2);
+ P1:=(x^2-1)/(x-1);
+ expand(P1);//developpe dans Q(x)
+ normal(P1),simplify(P1);//les 2 simplifient
+ P2:=-cos(5*x)+16*cos(x)*sin(x)^4-12*cos(x)*sin(x)^2+cos(x);
+ expand(P2);
+ normal(P2);
+ simplify(P2);
+ factor(X^12-1);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ phi12 est le facteur qui n'apparait pas dans: 
+ factor(X^6-1);factor(X^4-1);
+ P:=(2*x+1)^2*(x^5-1)/(x-1);
+ complex_mode:=1;factor(P*1.1);factor(approx(P));
+ complex_mode:=0;factor(P*1.0);factor(approx(P,5));factor(P);
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 57 12
+ On peut factoriser en imposant une extension algebrique avec une syntaxe£ comme dans maple.£ Mais je ne le trouve pas dans la doc (c'est rare). Exemples:
+ factor(X^12-1,sqrt(3)); 
+ factor(X^12-1,[sqrt(3),i]);
+ factor(X^12-1,exp(2*i*Pi/9));
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ selon les versions, cFactor(...,a) est plus sur si l'on veut etre sur que i a ete utilise. (en fait ca veut  plutot dire Q[I,a] factor)
+ cFactor(X^12-1,sqrt(3));//est probablement plus sur
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+ -------------------------------------EXERCICE-----------------------------------------
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 86 12
+Stategie: On cherche le centre o d'une homothetie transformant C1 en£C2, en suite on recupere le point de contact en exprimant qu'il est  £le sommet d'un triange rectable de base [oO2]. Attention, inter rend£un objet de type groupe de points, meme s'il y a unicite, pour £choisir un point dans l'intersection on utilise inter_unique
+// fltk 7Fl_Tile 20 36 982 541 12
+[
+// fltk N4xcas6FigureE 20 36 982 540 12
+// fltk N4xcas12History_PackE 22 79 322 70 12
+[
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ O1:=point(-2);O2:=point(2);r1:=1;
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ r2:=element(1.2..5,2);//Attention a ne pas faire de cercles de rayons infinis
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ C1:=cercle(O1,r1);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ C2:=cercle(O2,r2);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ m:=point(O1+i);droite(O1,m,affichage=dot_line);//un point de C1 non sur (O1O2)
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ dm:=parallele(O2,droite(O1,m),affichage=dot_line);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ n:=inter_unique(dm,C2);
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ droite(m,n);o:=inter_unique(droite(m,n),droite(O1,O2));
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ C:=cercle(O2,o,affichage=dot_line);t2:=inter_unique(C,C2)
+]
+// fltk 7Fl_Tile 31 54 313 23 12
+[
+// fltk N4xcas19Multiline_Input_tabE 31 54 313 22 12
+ T:=droite(o,t2,affichage=(red+line_width_2));
+]
+]
+// fltk N4xcas5Geo2dE 348 54 524 522 12
+-5.1316,5.1316,-5.1619,5.1619,[],-5,5,1,0,0,0,1,1,1,0,1,1.4167,0,1,1,[],24,18,256,0,100,0,0,1,0.1
+ 
+
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 28 12
+-------------------------------------EXERCICE---------------------------------
+ purge(a,u,v);
+ b:=a+u;c:=b+v;//on ordonne a,b,c
+ F:=a/(b+c)+b/(a+c)+c/(a+b)-3/2;
+// fltk N4xcas23Comment_Multiline_InputE 20 599 916 42 12
+ le numerateur et le denominateur n'ont que des coefficients positifs, donc F>0£ pour 0<a, 0<u , 0<v
+numer(F);
+denom(F);

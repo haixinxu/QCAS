@@ -1,0 +1,45 @@
+cp -f menu-debut.html menu.html
+
+grep "<A HREF=\"#htoc[0123456789]*\">Chapitre [3456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H4 CLASS="chapter">|' |sed -e 's|</A>|</H4>|' |sed -e 's|  |</A>  |' |sed -e 's|Chapitre|Chap|' |sed -e 's|#|index.html#|' >>menu.html
+grep "<A HREF=\"#htoc[0123456789]*\">Chapitre 10" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H4 CLASS="chapter">|' |sed -e 's|</A>|</H4>|' |sed -e 's|  |</A>  |' |sed -e 's|Chapitre|Chap|'  |sed -e 's|#|index.html#|' >>menu.html
+
+echo "</font>
+<hr>
+<font size=\"-1\">Détail du chapitre 6:</font>
+<ul>
+<li>
+<H5 CLASS=\"section\">" >>menu.html
+
+for i in `seq 1 14`; do grep "<A HREF=\"#htoc[0123456789]*\">6\.$i[^0123456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H5 CLASS="section">|' |sed -e 's|</A>|</H5>|' |sed -e 's|  |</A>  |'  |sed -e 's|#|index.html#|' >>menu.html ; done
+
+echo "</li>
+<li><h4><font color=\"#40A497\">Analyse</font></h4>
+">>menu.html
+
+for i in `seq 15 25`; do grep "<A HREF=\"#htoc[0123456789]*\">6\.$i[^0123456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H5 CLASS="section">|' |sed -e 's|</A>|</H5>|' |sed -e 's|  |</A>  |'  |sed -e 's|#|index.html#|' >>menu.html ; done
+
+echo "</li>
+<li><h4><font color="#40A497">Polynômes</font></h4>
+">>menu.html
+
+for i in `seq 26 35`; do grep "<A HREF=\"#htoc[0123456789]*\">6\.$i[^0123456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H5 CLASS="section">|' |sed -e 's|</A>|</H5>|' |sed -e 's|  |</A>  |'  |sed -e 's|#|index.html#|' >>menu.html ; done
+
+echo "</li>
+<li><h4><font color="#40A497">Listes, Séquences</font></h4>
+">>menu.html
+
+for i in `seq 36 42`; do grep "<A HREF=\"#htoc[0123456789]*\">6\.$i[^0123456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H5 CLASS="section">|' |sed -e 's|</A>|</H5>|' |sed -e 's|  |</A>  |'  |sed -e 's|#|index.html#|' >>menu.html ; done
+
+echo "</li>
+<li><h4><font color="#40A497">Matrices</font></h4>
+">>menu.html
+
+for i in `seq 52 57`; do grep "<A HREF=\"#htoc[0123456789]*\">6\.$i[^0123456789]" /usr/share/giac/doc/fr/cascmd_fr/index.html |sed -e 's|</LI><LI CLASS="li-toc">|<H5 CLASS="section">|' |sed -e 's|</A>|</H5>|' |sed -e 's|  |</A>  |'  |sed -e 's|#|index.html#|' >>menu.html ; done
+
+####fin
+echo "</li>
+</ul>
+
+
+</body> </html>
+">>menu.html

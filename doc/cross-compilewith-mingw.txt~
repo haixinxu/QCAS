@@ -1,0 +1,78 @@
+#Pour ajouter des chemins dans wine
+export Path='C://windows;C://windows/system;C://MinGW/bin;C://Python27'
+#Pour compiler giac: ajouter: #define __MINGW_H dans config.h apres le configure
+export LDFLAGS='-static-libgcc -static-libstdc++ -L/usr/i686-w64-mingw32/lib'
+## -L/usr/i686-w64-mingw32/lib
+#pour gmp 
+#./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+# et pas de export du tout: CC,CPP,CXX,LD...
+#
+#pour mpfr: gcc-4.6 internal error donc:
+# export CC=gcc-4.4; export CPP=cpp-4.4
+#pour pari faire make lib-stat; make install-lib-stat; make install-include
+./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+
+#pour pthread: binaire libpthreadGC2.a  + un lien dans vers libpthread.a
+
+##pour qcas/libqcas:
+#creer un dossier: /usr/share/qt4/win32-x-g++ identique a win32-g++
+# et modifier qmake.conf pour tenir compte de mingw: le diff:
+# on peut alors faire apres avoir installe Qt pour mingw avec wine:
+# qmake -spec win32-x-g++ qcas.pro   puis make
+############################################################################
+17c17
+< QMAKE_CC		= i686-w64-mingw32-gcc
+---
+> QMAKE_CC		= gcc
+30c30
+< QMAKE_CXX		= i686-w64-mingw32-g++
+---
+> QMAKE_CXX		= g++
+44,46c44,46
+< QMAKE_INCDIR		= /usr/i686-w64-mingw32/include/
+< QMAKE_INCDIR_QT		= /home/fred/.wine/drive_c/dev/Qt/4.8.5/include
+< QMAKE_LIBDIR_QT		= /home/fred/.wine/drive_c/dev/Qt/4.8.5/lib
+---
+> QMAKE_INCDIR		=
+> QMAKE_INCDIR_QT		= $$[QT_INSTALL_HEADERS]
+> QMAKE_LIBDIR_QT		= $$[QT_INSTALL_LIBS]
+53,54c53,54
+< QMAKE_LINK		= i686-w64-mingw32-g++
+< QMAKE_LINK_C		= i686-w64-mingw32-gcc
+---
+> QMAKE_LINK		= g++
+> QMAKE_LINK_C		= gcc
+77c77
+< #!isEmpty(QMAKE_SH) {
+---
+> !isEmpty(QMAKE_SH) {
+89,101c89,101
+< #} else {
+< #	QMAKE_COPY		= copy /y
+< #	QMAKE_COPY_DIR		= xcopy /s /q /y /i
+< #	QMAKE_MOVE		= move
+< #	QMAKE_DEL_FILE		= del
+< #	QMAKE_MKDIR		= mkdir
+< #	QMAKE_DEL_DIR		= rmdir
+< #    QMAKE_CHK_DIR_EXISTS	= if not exist
+< #}
+< 
+< QMAKE_MOC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}moc-qt4
+< QMAKE_UIC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}uic-qt4
+< QMAKE_IDC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}idc-qt4
+---
+> } else {
+> 	QMAKE_COPY		= copy /y
+> 	QMAKE_COPY_DIR		= xcopy /s /q /y /i
+> 	QMAKE_MOVE		= move
+> 	QMAKE_DEL_FILE		= del
+> 	QMAKE_MKDIR		= mkdir
+> 	QMAKE_DEL_DIR		= rmdir
+>     QMAKE_CHK_DIR_EXISTS	= if not exist
+> }
+> 
+> QMAKE_MOC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}moc.exe
+> QMAKE_UIC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}uic.exe
+> QMAKE_IDC		= $$[QT_INSTALL_BINS]$${DIR_SEPARATOR}idc.exe
+
+###################################################################################

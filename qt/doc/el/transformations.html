@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Transformations</title>
+</head>
+<body>
+<center><h3><font color="#40A497">Operations on the selected string</font></h3></center>
+<h3><a href="!undoandselect">Cancel</a>/<a href="!redoandselect">Redo</a></h3>
+<h4>Add/Remove des parenthesis: <a href="!()">(  )</a> / <a href="!op">op</a></h4>
+<h4>Factor, Regroup</h4>
+<ul>
+  <li>
+  <a href="ifactor">?</a>  <a href="!ifactor">ifactor</a><font size="-1">(for integers)</font></li>
+  <li><a href="factor">?</a>&nbsp;<a href="!factor">factor</a><font size="-1">(for polynomials)</font>, <a href="regroup">?</a>&nbsp;<a href="!regroup">regroup</a></li>
+</ul>
+<h4>Expand, simplify</h4>
+<ul>
+<li>  Expand  with simplifications.
+<center><a href="ratnormal">?</a>&nbsp;<a href="!ratnormal">ratnormal</a>, <a href="normal">?</a>&nbsp;<a href="!normal">normal</a>,  <a href="simplify">?</a>&nbsp;<a href="!simplify">simplify</a><br>
+  <font size="-1">(from the lightest to the most time consuming computation)</font></center></li>
+
+<li>Expand without regroup: <a href="expand">?</a>&nbsp;<a href="!expand">expand</a></li>
+<li>Partial fraction decomposition: <a href="partfrac">?</a>&nbsp;<a href="!partfrac">partfrac</a>, <a href="cpartfrac">?</a>&nbsp;<a href="!cpartfrac">cpartfrac</a><li>
+</ul>
+  
+<h4>Trigonometry</h4>
+<ul>
+  <li>Expand, linearise, regroup<br>
+<a href="trigexpand">?</a>&nbsp;<a href="!trigexpand">trigexpand</a>, <a href="tlin">?</a>&nbsp;<a href="!tlin">tlin</a>, <a href="tcollect">?</a>&nbsp;<a href="!tcollect">tcollect</a><li>
+  <li>Replace<br>
+  <a href="halftan">?</a>&nbsp;<a href="!halftan">halftan</a>, <a href="cos2sintan">?</a>&nbsp;<a href="!cos2sintan">cos2sintan</a>, <a href="sin2costan">?</a>&nbsp;<a href="!sin2costan">sin2costan</a>, <a href="tan2sincos">?</a>&nbsp;<a href="!tan2sincos">tan2sincos</a>, <a href="tan2cossin2">?</a>&nbsp;<a href="!tan2cossin2">tan2cossin2</a>, <a href="tan2sincos2">?</a>&nbsp;<a href="!tan2sincos2">tan2sincos2</a>, <a href="trigcos">?</a>&nbsp;<a href="!trigcos">trigcos</a>, <a href="trigsin">?</a>&nbsp;<a href="!trigsin">trigsin</a>, <a href="trigtan">?</a>&nbsp;<a href="!trigtan">trigtan</a>, <a href="shift_phase">?</a>&nbsp;<a href="!shift_phase">shift_phase</a></li>
+<li>Trigo and exponentials:<br>
+<a href="exp2trig">?</a>&nbsp;<a href="!exp2trig">exp2trig</a>, <a href="trig2exp">?</a>&nbsp;<a href="!trig2exp">trig2exp</a>, <a href="tsimplify">?</a>&nbsp;<a href="!tsimplify">tsimplify</a>, <a href="texpand">?</a>&nbsp;<a href="!texpand">texpand</a></li>
+<li>Trigo and inverse functions:<br>
+<a href="atrig2ln">?</a>&nbsp;<a href="!atrig2ln">atrig2ln</a>, <a href="acos2asin">?</a>&nbsp;<a href="!acos2asin">acos2asin</a>, <a href="acos2atan">?</a>&nbsp;<a href="!acos2atan">acos2atan</a>, <a href="asin2acos">?</a>&nbsp;<a href="!asin2acos">asin2acos</a>, <a href="asin2atan">?</a>&nbsp;<a href="!asin2atan">asin2atan</a>, <a href="atan2acos">?</a>&nbsp;<a href="!atan2acos">atan2acos</a>, <a href="atan2asin">?</a>&nbsp;<a href="!atan2asin">atan2asin</a></li>
+</ul>
+<h4>Exp, log, powers:</h4>
+<ul>
+<li>
+<a href="exp2pow">?</a>&nbsp;<a href="!exp2pow">exp2pow</a>, <a href="hyp2exp">?</a>&nbsp;<a href="!hyp2exp">hyp2exp</a>, <a href="expexpand">?</a>&nbsp;<a href="!expexpand">expexpand</a>, <a href="lin">?</a>&nbsp;<a href="!lin">lin</a>, <a href="lncollect">?</a>&nbsp;<a href="!lncollect">lncollect</a>, <a href="lnexpand">?</a>&nbsp;<a href="!lnexpand">lnexpand</a>, <a href="powexpand">?</a>&nbsp;<a href="!powexpand">powexpand</a>, <a href="pow2exp">?</a>&nbsp;<a href="!pow2exp">pow2exp</a></li>
+</ul>
+<h4>Various transformations</h4>
+<ul><li>Conjugate:<br>
+  <a href="mult_conjugate">?</a>&nbsp;<a href="!mult_conjugate">mult_conjugate</a>, <a href="mult_c_conjugate">?</a>&nbsp;<a href="!mult_c_conjugate">mult_c_conjugate</a></li>
+<li>Reals:<br>
+<a href="epsilon2zero">?</a>&nbsp;<a href="!epsilon2zero">epsilon2zero</a>, <a href="evalf">?</a>&nbsp;<a href="!evalf">evalf</a>, <a href="float2rational">?</a>&nbsp;<a href="!float2rational">float2rational</a></li>
+</ul>
+
+</body> </html>

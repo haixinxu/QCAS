@@ -1,0 +1,26 @@
+This archive will help you embedd the giac computer algebra system 
+in your QT application.
+It contains all the required source files from 
+- giac http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
+- the long integer library libtommath http://libtom.org/
+- a minimal qt interface 
+
+Step 1: extract the archive in a directory 
+Step 2: run 
+  qtcreator test.pro &
+or
+  necessitas test.pro &
+(if you want to build an Android application with Ministro Qt libs).
+Step 3: build and run the minimal interface. Try for example 
+a:=int(1/(x^4-1)) enter  then factor(diff(a)) enter
+Step 4: modify to suit your needs!
+
+Requirements: the giac+tommath library (without UI) are about 5M of code (ARM),
+and require at least 512K of RAM to run.
+
+Documentation for giac: look in the giac .h files, on the Xcas forum, and
+http://www-fourier.ujf-grenoble.fr/~parisse/giac.html#doc
+
+License: Giac is licensed under the GPL 3, comemrcial license are also
+available. Libtommath is free to use for open-source and closed-source 
+projects.

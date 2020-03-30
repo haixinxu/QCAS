@@ -1,0 +1,42 @@
+qcas (0.5.2) unstable; urgency=low
+
+  * upstream updates. Fixes for Qt4 and format-security in qtmmlwidgets
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Sat, 2 Dec 2017 06:33:00 +0100
+
+qcas (0.5.1) unstable; urgency=low
+
+  * upstream updates for giac html doc; fixes  missing return in 3 functions
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Wed, 11 Oct 2017 15:29:00 +0100
+
+qcas (0.5.0) unstable; urgency=low
+
+  * upstream fixes for Qt5 and qtmml
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Wed, 11 Oct 2017 15:29:00 +0100
+
+qcas (0.4.9) unstable; urgency=low
+
+  * upstream fixes for Qt5 and qtmml
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Thu, 27 Sep 2016 08:29:00 +0100
+
+qcas (0.4.8) unstable; urgency=low
+
+  * upstream fixes for newer giac doc
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Thu, 19 Nov 2015 17:29:00 +0100
+
+qcas (0.4.7) unstable; urgency=low
+
+  * upstream fixes for newer giac doc
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Tue, 29 May 2015 17:29:00 +0100
+
+qcas (0.4.6) unstable; urgency=low
+
+  * source package automatically created by f.han
+
+ -- Frederic Han  <frederic.han@imj-prg.fr>  Tue, 23 Dec 2014 11:29:00 +0100
+

@@ -1,0 +1,44 @@
+geo2D inter:
+
+
+3) les ellipses n'ont pas de bouton rempli
+
+5) dans sendtext geo2d un parent du type:
+xt:=1+t
+
+puis
+t:=element(-5..5)
+point(xt) ne marche pas. utiliser plutot:
+xt(t):=1+t
+
+puis point(xt(t))
+6) approx(1/10000000,4) donne 0
+
+
+7) Todo: default font size dans formal line widget ou implementer le ctrl wheel de plaintext
+    /*test fred
+    QFont f = document()->defaultFont();
+
+    f.setPointSize(20);
+    document()->setDefaultFont(f);
+    */
+
+
+
+8) Pb avec plotinequation et le rempli pas toujours du bon cote:
+
+plotinequation(x^2-y>0,[x=0..4,y=0..4],xstep=0.5,ystep=0.1)
+
+9) Pb avec les plots et grands reels. Ex: cercle(0,10**100)
+
+
+
+10) mathml: rootof(x^2+x+1):=j   alors ca n'affiche pas j mais laisse des rootof.
+    mathml: les poly sous forme de liste n'affichent pas poly
+
+11) mathml: [seq(seq(k*j,j=0..3),k=4..7)]  affiche une matrice.
+
+12) mathml: les reels avec beaucoup de chiffres n'affichent plus rien avec giac recents.
+
+13) FAIT: Qt5: verifier les racourcis clavier: Ctrl+O ...
+    FAIT: PB avec la doc html

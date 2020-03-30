@@ -1,0 +1,28 @@
+Source: qcas
+Maintainer: Frederic Han <frederic.han@imj-prg.fr>
+Section: math
+Priority: optional
+Build-Depends: debhelper (>= 7), giac (>= 1.1.3), libgmp-dev, qt5-default, qt5-qmake, libqt5svg5-dev
+XB-Python-Version: ${python:Versions}
+Standards-Version: 3.8.4
+Homepage: http://git.tuxfamily.org/?p=qcas/qcas.git
+License: GPL-3
+
+Package: qcas
+Architecture: any
+Depends: giac (>=1.1), ${misc:Depends}, ${shlibs:Depends}
+Description: A QT frontend to the c++ library giac. (Computer Algebra System)
+ .
+   * qcas implements most of the giac/xcas functionalities excepts 3D Graphics.
+ .
+   * Giac is a general purpose Computer algebra system by Bernard Parisse released under GPLv3.
+ .
+      - http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
+      - It is build on C and C++ libraries: 
+        PARI, NTL (advanced arithmetic functions), CoCoA (Groebner basis), GSL (numerics), 
+        GMP (big integers), MPFR (big/multiprecision floats) 
+      - It  provides (fast) algorithms for multivariate polynomial operations (product, GCD, factorisation) and
+      - symbolic  computations: solver, simplifications, limits/series, integration, sommation...
+      - Linear Algebra with numerical or symbolic coefficients.
+ .
+
