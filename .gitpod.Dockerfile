@@ -9,5 +9,5 @@ USER gitpod
 #
 # More information: https://www.gitpod.io/docs/config-docker/
 
-RUN apt-get update && \
-    apt-get install -y qt5-default
+RUN sudo apt-get update && \
+    sudo apt-get install -y qt5-default
