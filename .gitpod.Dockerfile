@@ -10,7 +10,7 @@ USER gitpod
 # More information: https://www.gitpod.io/docs/config-docker/
 
 RUN sudo apt-get update && \
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y qt5-default qtcreator qt*5-dev
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y qt5-default qtcreator qt*5-dev libqt5*-dev
 
 RUN sudo mv /usr/bin/start-vnc-session.sh /usr/bin/start-vnc-session.sh.bak && \
     sudo sed 's/1920/1024/g' /usr/bin/start-vnc-session.sh.bak  |sudo sed 's/1080/768/g' > /tmp/start-vnc-session.sh && \
