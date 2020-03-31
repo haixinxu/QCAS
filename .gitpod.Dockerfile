@@ -14,4 +14,5 @@ RUN sudo apt-get update && \
 
 RUN sudo mv /usr/bin/start-vnc-session.sh /usr/bin/start-vnc-session.sh.bak && \
     sudo sed 's/1920/1024/g' /usr/bin/start-vnc-session.sh.bak  |sudo sed 's/1080/768/g' > /tmp/start-vnc-session.sh && \
-    sudo mv /tmp/start-vnc-session.sh /usr/bin/start-vnc-session.sh
+    sudo mv /tmp/start-vnc-session.sh /usr/bin/start-vnc-session.sh && \
+    sudo chmod +x /usr/bin/start-vnc-session.sh
