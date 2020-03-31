@@ -11,3 +11,6 @@ USER gitpod
 
 RUN sudo apt-get update && \
     sudo apt-get install -y qt5-default
+
+RUN mv /usr/bin/start-vnc-session.sh /usr/bin/start-vnc-session.sh.bak && \
+    sed 's/1920/1024/g' /usr/bin/start-vnc-session.sh.bak  | sed 's/1080/768/g' > /usr/bin/start-vnc-session.sh
